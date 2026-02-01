@@ -1,3 +1,46 @@
+body{
+  background-color:#edecec;
+}
+
 #root {
-  color: red;
+  color: black;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:30px;
+  margin:50px;
+}
+
+.film-card {
+  border:1px;
+  border-radius:5px;
+  padding: 20px;
+  width:320px;
+  height:450px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  background-color:white;
+  box-shadow:0 2px 6px rgb(159, 158, 158,0.8);
+}
+
+.film-card h3{
+  text-align:center;
+  width:100%;
+  box-sizing:border-box;
+  border: 1px solid black;
+  border-radius:5px;
+  padding:20px 20px;
+}
+
+.film-card img{
+  display:block;
+  margin:0 auto;
+  width: 100%;
+  height:160px;
+  object-fit:cover;
+}
+
+.film-card p{
+  text-align:left;
+  overflow-y: auto;  
 }
