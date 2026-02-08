@@ -1,5 +1,63 @@
 body{
   background-color:#edecec;
+  margin: 0;
+  padding: 0;
+}
+
+.controls-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 50px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; /* Wraps on small screens */
+}
+
+#search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+#episode-selector {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+}
+
+#episode-selector:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+#episode-count {
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.film-card.highlighted {
+  border: 3px solid #007bff;
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
 #root {
