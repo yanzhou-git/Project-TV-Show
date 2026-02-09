@@ -1,12 +1,45 @@
 //You can edit ALL of the code here
 let allEpisodes = [];
 
-function setup() {
-  allEpisodes = getAllEpisodes();
-  render(allEpisodes);
-  populateEpisodeSelector();
-  setupSearch();
-  setupEpisodeSelector();
+async function setup() {
+  try {
+    showLoading();
+    const response = await fetch("https://api.tvmaze.com/shows/82/episodes");
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    allEpisodes = await response.json();
+
+    render(allEpisodes);
+    populateEpisodeSelector();
+    setupSearch();
+    setupEpisodeSelector();
+  } catch (error) {
+    showError(error.message);
+  }
+}
+
+// ----- Loading Indicator -----
+function showLoading() {
+  const rootElem = document.getElementById("root");
+  rootElem.innerHTML = `<div class="loading">Loading episodes...</div>`;
+
+  const countElem = document.getElementById("episode-count");
+  countElem.textCOntent = `Loading...`;
+}
+
+// ----- Error Handler ----
+function showError(message) {
+  const rootElem = document.getElementById("root");
+  rootElem.innerHTML = `<div class="error">
+      <h2>⚠️ Error Loading Episodes</h2>
+      <p>${message}</p>
+      <p>Please refresh the page to try again.</p>
+    </div>`;
+
+  const countElem = document.getElementById("episode-count");
+  countElem.textContent = "Error loading episodes";
 }
 
 function filterEpisodes(searchTerm) {
